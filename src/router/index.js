@@ -18,7 +18,7 @@ let routes = [
 		path: '/landing-page',
 		name: 'Landing Page',
 		layout: "dashboard",
-		component: () => import(/* webpackChunkName: "dashboard" */ '../views/app-landing-page/landing-page.vue'),
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/admin/app-landing-page/landing-page.vue'),
 		meta: {
 			layoutClass: "navbarFixed",
 		},
@@ -27,7 +27,7 @@ let routes = [
 		path: '/add-new-paper',
 		name: 'Add New Paper',
 		layout: "dashboard",
-		component: () => import(/* webpackChunkName: "dashboard" */ '../views/add-paper-page/paper-page.vue'),
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/admin/add-paper-page/paper-page.vue'),
 		meta: {
 			layoutClass: "navbarFixed",
 		},
@@ -36,7 +36,25 @@ let routes = [
 		path: '/check-results',
 		name: 'Check Results',
 		layout: "dashboard",
-		component: () => import(/* webpackChunkName: "dashboard" */ '../views/check-result-page/check-result.vue'),
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/admin/check-result-page/check-result.vue'),
+		meta: {
+			layoutClass: "navbarFixed",
+		},
+	},
+	{
+		path: '/question-list',
+		name: 'Question List',
+		layout: "dashboard",
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/admin/question-list-page/question-list.vue'),
+		meta: {
+			layoutClass: "navbarFixed",
+		},
+	},
+	{
+		path: '/user-data',
+		name: 'User Data',
+		layout: "dashboard",
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/admin/user-data-page/user-data.vue'),
 		meta: {
 			layoutClass: "navbarFixed",
 		},
