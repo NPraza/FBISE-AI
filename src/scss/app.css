@@ -4573,6 +4573,7 @@ body {
 
 .ant-table-thead > tr > th, .ant-table-tbody > tr > td {
   padding: 16px 25px;
+  text-align: center;
 }
 
 .ant-table-tbody > tr:last-child > td {
@@ -4625,10 +4626,6 @@ body {
   .ant-table-body {
     overflow: visible;
   }
-}
-.ant-table-body .btn-edit {
-  font-weight: 600;
-  color: #8C8C8C;
 }
 
 .table-avatar-info {

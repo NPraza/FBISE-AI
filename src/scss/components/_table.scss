@@ -13,6 +13,7 @@
 }
 .ant-table-thead > tr > th, .ant-table-tbody > tr > td {
 	padding: 16px 25px;
+	text-align: center;
 }
 .ant-table-tbody > tr:last-child > td {
 	border-bottom: 0;
@@ -61,10 +62,10 @@
 		overflow: visible;
 	}
 
-	.btn-edit {
-		font-weight: $fw-semibold;
-		color: $color-muted;
-	}
+	// .btn-edit {
+	// 	font-weight: $fw-semibold;
+	// 	color: $color-muted;
+	// }
 }
 .table-avatar-info {
 	display: flex;

@@ -9,14 +9,17 @@
         <template>
             <a-row type="flex" justify="center" class="mb-35">
                 <a-col :span="6"><a-button type="primary"> Papers management </a-button></a-col>
-                <a-col :span="6"><a-button> Check Results </a-button></a-col>
+                <a-col :span="6">
+                    <router-link to="/check-results">
+                        <a-button> Check Results </a-button>
+                    </router-link>
+                </a-col>
               </a-row>
             <!-- <a-button icon="plus"> Create Campaign </a-button> -->
           <!-- Campaign Table Card -->
           <a-card
             :bordered="false"
             class="header-solid h-full"
-            :bodyStyle="{ padding: 0 }"
           >
             <template #title>
               <a-row type="flex" align="middle" class="mb-20">

@@ -32,6 +32,15 @@ let routes = [
 			layoutClass: "navbarFixed",
 		},
 	},
+	{
+		path: '/check-results',
+		name: 'Check Results',
+		layout: "dashboard",
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/check-result-page/check-result.vue'),
+		meta: {
+			layoutClass: "navbarFixed",
+		},
+	},
 	// {
 	// 	path: '/dashboard',
 	// 	name: 'Dashboard',
