@@ -21,25 +21,25 @@
               </a-divider>
               <a-form :form="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }" @submit="handleSubmit">
                 <a-form-item label="Add Papper Name">
-                  <a-input />
+                  <a-input v-decorator="['addPapperName', { rules: [{ required: true, message: 'Please add paper name' }] }]" />
                 </a-form-item>
                 <a-form-item label="Add Question Number">
-                  <a-input-number />
+                  <a-input-number v-decorator="['addQuestionNumber', { rules: [{ required: true, message: 'Please add question number' }] }]" />
                 </a-form-item>
                 <a-form-item label="Add Question">
-                  <a-textarea :rows="4" />
+                  <a-textarea :rows="4"  v-decorator="['addQuestion', { rules: [{ required: true, message: 'Please add question' }] }]" />
                 </a-form-item>
                 <a-form-item label="Add Provided Rubrics Here:">
-                  <a-input />
+                  <a-input  v-decorator="['rubrics', { rules: [{ required: true, message: 'Please provide rubrics' }] }]" />
                 </a-form-item>
                 <a-divider orientation="left">
                   AI Data
                 </a-divider>
                 <a-form-item label="A.I Checking Prompt">
-                  <a-textarea :rows="4" />
+                  <a-textarea :rows="4"  v-decorator="['prompt', { rules: [{ required: true, message: 'Please add prompt' }] }]" />
                 </a-form-item>
                 <a-form-item label="A.I Prompt for Graph">
-                  <a-textarea :rows="4" />
+                  <a-textarea :rows="4"  v-decorator="['promptGraph', { rules: [{ required: true, message: 'Please add  prompt graph' }] }]" />
                 </a-form-item>
                 <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
                   <a-button type="primary" html-type="submit">
