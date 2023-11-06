@@ -23,6 +23,15 @@ let routes = [
 			layoutClass: "navbarFixed",
 		},
 	},
+	{
+		path: '/add-new-paper',
+		name: 'Add New Paper',
+		layout: "dashboard",
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/add-paper-page/paper-page.vue'),
+		meta: {
+			layoutClass: "navbarFixed",
+		},
+	},
 	// {
 	// 	path: '/dashboard',
 	// 	name: 'Dashboard',

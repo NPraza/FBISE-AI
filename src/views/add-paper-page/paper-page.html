@@ -1,0 +1,61 @@
+<div>
+    <a-row :gutter="24" type="flex">
+      <a-col :span="24" class="mb-24">
+        <template>
+          <a-card
+            :bordered="false"
+            class="header-solid h-full"
+            :bodyStyle="{ padding: 0 }"
+          >
+            <template #title>
+              <a-row type="flex" align="middle" class="mb-20">
+                <a-col :span="24" :md="12">
+                  <h5 class="font-semibold m-0">Welcome to FBISE Subjective A.I Assessment Portal: </h5>
+                  <p>Welcome to the portal, where you can effortlessly upload questions and leverage AI assistance for evaluation.</p>
+                </a-col>
+              </a-row>
+            </template>
+            <template>
+              <a-divider orientation="left">
+                Basic Setup
+              </a-divider>
+              <a-form :form="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }" @submit="handleSubmit">
+                <a-form-item label="Add Papper Name">
+                  <a-input />
+                </a-form-item>
+                <a-form-item label="Add Question Number">
+                  <a-input-number />
+                </a-form-item>
+                <a-form-item label="Add Question">
+                  <a-textarea :rows="4" />
+                </a-form-item>
+                <a-form-item label="Add Provided Rubrics Here:">
+                  <a-input />
+                </a-form-item>
+                <a-divider orientation="left">
+                  AI Data
+                </a-divider>
+                <a-form-item label="A.I Checking Prompt">
+                  <a-input />
+                </a-form-item>
+                <a-form-item label="A.I Prompt for Graph">
+                  <a-input />
+                </a-form-item>
+                <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
+                  <a-button type="primary" html-type="submit">
+                    Submit
+                  </a-button>
+                </a-form-item>
+              </a-form>
+            </template>
+          </a-card>
+          <!-- / Campaign Table Card -->
+        </template>
+  
+        <!-- / Compaign Table Card -->
+      </a-col>
+      <!-- / Compaign Table Column -->
+    </a-row>
+    <!-- / Compaign Table -->
+  </div>
+  
