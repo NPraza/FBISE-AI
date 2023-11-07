@@ -1,6 +1,7 @@
 <template src="./landing-page.html"></template>
 
 <script>
+import api from './../../../services/api';
 
 // "Authors" table list of columns and their properties.
 const tableHeader = [
@@ -28,14 +29,7 @@ const tableHeader = [
 ];
 
 // "Authors" table list of rows and their properties.
-const tableData = [
-    {
-		key: '1',
-		date: "21-1-2022",
-		paper: '$14,000',
-		questionNumber: 60,
-	},
-];
+let tableData = [];
 
 export default {
   components: {
@@ -85,7 +79,23 @@ export default {
     //     ],
     };
   },
-  mounted () { 
+  async mounted () { 
+    api.get('/papers')
+    .then((response) => {
+      let i = 0;
+      // Handle the response data here
+      this.tableData = response.data.map( res => {
+        i++;
+        const date = new Date(res.modified_at).toLocaleDateString();
+        return {key: i.toString(), date, paper: res.name, questionNumber: res.questions.length, paper_id: res._id}
+      })
+      console.log('User data:', this.tableData);
+    })
+    .catch((error) => {
+      // Handle any errors here
+      console.error('Error:', error);
+    });
+
   },
   methods: {
   },

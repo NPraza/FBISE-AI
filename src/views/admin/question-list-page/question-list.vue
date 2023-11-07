@@ -1,6 +1,7 @@
 <template src="./question-list.html"></template>
 
 <script>
+import api from '../../../services/api';
 // "Authors" table list of columns and their properties.
 const tableHeader = [
   {
@@ -33,15 +34,7 @@ const tableHeader = [
 ];
 
 // "Authors" table list of rows and their properties.
-const tableData = [
-    {
-		key: '1',
-		date: "21-1-2022",
-		paper: 'Physics',
-		questionNumber: 60,
-    questionText: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',
-	},
-];
+const tableData = [];
 
 
 export default {
@@ -49,6 +42,7 @@ export default {
   },
   data() {
     return {
+      paper_id: String,
       tableHeader,
       tableData,
       searchText: '',
@@ -59,7 +53,29 @@ export default {
       },
     };
   },
+  beforeMount(){
+    this.paper_id = this.$route.params.paper_id
+  },
   mounted () { 
+    api.get('/questions?paper_id='+this.paper_id)
+    .then(response => {
+      let i = 0;
+      console.log(response.data);
+      this.tableData = response.data.map(res => {
+        i++;
+        return {
+          key: i.toString(),
+          date: new Date(res.created_at).toLocaleDateString(),
+          paper: res.paper_id.name,
+          questionNumber: res.number,
+          questionText: res.statement,
+          question_id: res._id
+        }
+      });
+    })
+    .catch(error => {
+      console.error(error);
+    });
   },
   methods: {
   },
