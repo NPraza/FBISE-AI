@@ -1,0 +1,89 @@
+<div>
+    <a-row :gutter="24" type="flex">
+      <a-col :span="24" class="mb-24">
+        <template>
+          <a-card
+            :bordered="false"
+            class="header-solid h-full"
+          >
+            <template #title>
+              <a-row type="flex" align="middle" class="mb-20">
+                <a-col :span="24" :md="12">
+                  <h5 class="font-semibold m-0">Welcome to FBISE Subjective A.I Assessment Portal: </h5>
+                  <p>Welcome to the portal, where you can effortlessly upload questions and leverage AI assistance for evaluation.</p>
+                </a-col>
+              </a-row>
+            </template>
+            <template>
+              <a-row type="flex" align="middle" class="mb-20">
+                <a-col :md="4">
+                  Add Papper Name:
+                </a-col>
+                <a-col :md="8">
+                  <a-select style="width: 300px" @change="handleChange" placeholder="Select paper">
+                    <a-select-option value="jack">
+                      Jack
+                    </a-select-option>
+                    <a-select-option value="lucy">
+                      Lucy
+                    </a-select-option>
+                    <a-select-option value="disabled" disabled>
+                      Disabled
+                    </a-select-option>
+                    <a-select-option value="Yiminghe">
+                      yiminghe
+                    </a-select-option>
+                  </a-select>
+                </a-col>
+              </a-row>
+              <a-row type="flex" align="middle" class="mb-20">
+                <a-col :md="4">
+                  Add Papper Name:
+                </a-col>
+                <a-col :md="20">
+                  <a-select class="mb-20" style="width: 300px" @change="handleChange" placeholder="Select a person">
+                    <a-select-option value="jack">
+                      Jack
+                    </a-select-option>
+                    <a-select-option value="lucy">
+                      Lucy
+                    </a-select-option>
+                    <a-select-option value="disabled" disabled>
+                      Disabled
+                    </a-select-option>
+                    <a-select-option value="Yiminghe">
+                      yiminghe
+                    </a-select-option>
+                  </a-select>
+                  <a-upload-dragger
+                  name="file"
+                  :multiple="true"
+                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                  @change="handleChange"
+                >
+                  <p class="ant-upload-drag-icon">
+                    <a-icon type="inbox" />
+                  </p>
+                  <p class="ant-upload-text">s
+                    Click or drag file to this area to upload
+                  </p>
+                  <p class="ant-upload-hint">
+                    Support for a single or bulk upload. Strictly prohibit from uploading company data or other
+                    band files
+                  </p>
+                </a-upload-dragger>
+                </a-col>
+              </a-row>
+             
+            </template>
+          </a-card>
+          <!-- / Campaign Table Card -->
+        </template>
+  
+        <!-- / Compaign Table Card -->
+      </a-col>
+      <!-- / Compaign Table Column -->
+    </a-row>
+    <!-- / Compaign Table -->
+  </div>
+  

@@ -1,0 +1,85 @@
+<div>
+  <template>
+    <!-- Compaign Table -->
+    <a-row type="flex">
+      <!-- Compaign Table Column -->
+      <a-col :span="24" class="mb-24">
+        <!-- Compaign Table Card -->
+        <!-- <CardAuthorTable :data="table1Data" :columns="table1Columns"></CardAuthorTable> -->
+  
+        <template>
+            <a-row type="flex" justify="center" class="mb-35">
+                <a-col :span="6"><a-button type="primary"> Papers management </a-button></a-col>
+                <a-col :span="6">
+                    <router-link to="/check-results">
+                        <a-button> Check Results </a-button>
+                    </router-link>
+                </a-col>
+              </a-row>
+            <!-- <a-button icon="plus"> Create Campaign </a-button> -->
+          <!-- Campaign Table Card -->
+          <a-card
+            :bordered="false"
+            class="header-solid h-full"
+          >
+            <template #title>
+              <a-row type="flex" align="middle" class="mb-20">
+                <a-col :span="24" :md="12">
+                  <h5 class="font-semibold m-0">Welcome to FBISE Subjective A.I Assessment Portal: </h5>
+                  <p>Welcome to the portal, where you can effortlessly upload questions and leverage AI assistance for evaluation.</p>
+                </a-col>
+                <a-col
+                  :span="24"
+                  :md="12"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                  "
+                >
+                  <router-link to="/add-new-paper">
+                    <a-button icon="plus"> Add a new Paper</a-button>
+                  </router-link>
+                </a-col>
+              </a-row>
+              <a-row type="flex" align="middle">
+                <a-col :span="24" :md="8">
+                  <a-input-search
+                    v-model:value="searchText"
+                    placeholder="Search Campaign"
+                    :enter-button="true"
+                    @search="searchCampaign"
+                  />
+                </a-col>
+              </a-row>
+            </template>
+            <a-table
+              :columns="tableHeader"
+              :data-source="tableData"
+              :pagination="pagination"
+              :loading="loading"
+            >
+              <template slot="name" slot-scope="row">
+                <td class="ant-table-column-has-actions ant-table-column-has-sorters">{{row.name}} <img v-if="row.popular" src="images/growth.svg"></td>
+                
+              </template>
+              <template slot="editBtn" slot-scope="row">
+                <router-link to="/question-list">
+                  <a-button type="primary" >
+                   Edit
+                  </a-button>
+                </router-link>
+              </template>
+            </a-table>
+          </a-card>
+          <!-- / Campaign Table Card -->
+        </template>
+  
+        <!-- / Compaign Table Card -->
+      </a-col>
+      <!-- / Compaign Table Column -->
+    </a-row>
+    <!-- / Compaign Table -->
+  </template>
+  </div>
+  

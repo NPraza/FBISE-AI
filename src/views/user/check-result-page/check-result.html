@@ -1,0 +1,62 @@
+<div>
+    <a-row :gutter="24" type="flex">
+      <a-col :span="24" class="mb-24">
+        <template>
+          <a-row type="flex" justify="center" class="mb-35">
+            <a-col :span="6">
+              <router-link to="/landing-page">
+                <a-button> Papers management </a-button>
+              </router-link>
+            </a-col>
+            <a-col :span="6">
+                <router-link to="/check-results">
+                    <a-button type="primary"> Check Results </a-button>
+                </router-link>
+            </a-col>
+          </a-row>
+          <a-card
+            :bordered="false"
+            class="header-solid h-full"
+          >
+            <template #title>
+              <a-row type="flex" align="middle" class="mb-20">
+                <a-col :span="24" :md="12">
+                  <h5 class="font-semibold m-0">Welcome to FBISE Subjective A.I Assessment Portal: </h5>
+                  <p>Welcome to the portal, where you can effortlessly upload questions and leverage AI assistance for evaluation.</p>
+                </a-col>
+              </a-row>
+              <a-row type="flex" align="middle">
+                <a-col :span="24" :md="8">
+                  <a-input-search
+                    v-model:value="searchText"
+                    placeholder="Search Results"
+                    :enter-button="true"
+                  />
+                </a-col>
+              </a-row>
+            </template>
+            <a-table
+              :columns="tableHeader"
+              :data-source="tableData"
+              :pagination="pagination"
+              :loading="loading"
+            >
+              <!-- <template slot="name" slot-scope="row">
+                <td class="ant-table-column-has-actions ant-table-column-has-sorters">{{row.name}} <img v-if="row.popular" src="images/growth.svg"></td>
+                
+              </template>
+              <template slot="conversion" slot-scope="row">
+                <a @click="goToConversions(row)">View</a>
+              </template> -->
+              <template slot="userData" slot-scope="row">
+                <a-button type="primary" class="btn-edit" block>
+                  Go to user data
+                </a-button>
+              </template>
+            </a-table>
+          </a-card>
+        </template>
+      </a-col>
+    </a-row>
+  </div>
+  

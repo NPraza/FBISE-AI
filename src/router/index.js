@@ -59,6 +59,24 @@ let routes = [
 			layoutClass: "navbarFixed",
 		},
 	},
+	{
+		path: '/home',
+		name: 'Home Page',
+		layout: "dashboard",
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/user/app-landing-page/landing-page.vue'),
+		meta: {
+			layoutClass: "navbarFixed",
+		},
+	},
+	{
+		path: '/upload-paper',
+		name: 'Upload paper',
+		layout: "dashboard",
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/user/upload-paper-page/upload-paper.vue'),
+		meta: {
+			layoutClass: "navbarFixed",
+		},
+	},
 	// {
 	// 	path: '/dashboard',
 	// 	name: 'Dashboard',
