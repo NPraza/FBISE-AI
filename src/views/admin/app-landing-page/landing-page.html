@@ -58,12 +58,8 @@
               :pagination="pagination"
               :loading="loading"
             >
-              <template slot="name" slot-scope="row">
-                <td class="ant-table-column-has-actions ant-table-column-has-sorters">{{row.name}} <img v-if="row.popular" src="images/growth.svg"></td>
-                
-              </template>
               <template slot="editBtn" slot-scope="row">
-                <router-link to="/question-list">
+                <router-link :to="{ name: 'Question List', params: { paper_id: row.paper_id }}">
                   <a-button type="primary" >
                    Edit
                   </a-button>

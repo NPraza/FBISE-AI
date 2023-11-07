@@ -31,7 +31,7 @@
               :loading="loading"
             >
               <template slot="editBtn" slot-scope="row">
-                <router-link to="/add-new-paper">
+                <router-link :to="{ name: 'Edit New Paper', query: { question_id: row.question_id }}">
                   <a-button type="primary" class="btn-edit">
                   Edit
                   </a-button>

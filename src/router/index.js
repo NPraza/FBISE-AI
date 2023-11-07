@@ -33,6 +33,15 @@ let routes = [
 		},
 	},
 	{
+		path: '/edit-new-paper',
+		name: 'Edit New Paper',
+		layout: "dashboard",
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/admin/add-paper-page/paper-page.vue'),
+		meta: {
+			layoutClass: "navbarFixed",
+		},
+	},
+	{
 		path: '/check-results',
 		name: 'Check Results',
 		layout: "dashboard",
@@ -42,7 +51,7 @@ let routes = [
 		},
 	},
 	{
-		path: '/question-list',
+		path: '/question-list/:paper_id',
 		name: 'Question List',
 		layout: "dashboard",
 		component: () => import(/* webpackChunkName: "dashboard" */ '../views/admin/question-list-page/question-list.vue'),
@@ -104,11 +113,11 @@ let routes = [
 	// 	},
 	// 	component: () => import('../views/Profile.vue'),
 	// },
-	// {
-	// 	path: '/sign-in',
-	// 	name: 'Sign-In',
-	// 	component: () => import('../views/Sign-In.vue'),
-	// },
+	{
+		path: '/sign-in',
+		name: 'Sign-In',
+		component: () => import('../views/Sign-In.vue'),
+	},
 	// {
 	// 	path: '/sign-up',
 	// 	name: 'Sign-Up',
@@ -152,6 +161,20 @@ const router = new VueRouter({
 			behavior: 'smooth',
 		}
 	}
-})
+});
+
+
+// Add a global beforeEnter guard to routes
+router.beforeEach((to, from, next) => {
+	const authToken = localStorage.getItem('authToken');
+  
+	if (to.name !== 'Sign-In' && !authToken) {
+	  // If the user is not logged in and the route is not 'Sign-In', redirect to 'Sign-In' page
+	  next({ name: 'Sign-In' });
+	} else {
+	  // User is authenticated or navigating to 'Sign-In', allow access to the route
+	  next();
+	}
+  });
 
 export default router
