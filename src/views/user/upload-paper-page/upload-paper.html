@@ -41,7 +41,7 @@
                   Add Papper Name:
                 </a-col>
                 <a-col :md="20">
-                  <a-select class="mb-20" style="width: 300px" @change="handleChange" placeholder="Select a person">
+                  <a-select style="width: 300px" @change="handleChange" placeholder="Select a person">
                     <a-select-option value="jack">
                       Jack
                     </a-select-option>
@@ -55,6 +55,11 @@
                       yiminghe
                     </a-select-option>
                   </a-select>
+                  
+                </a-col>
+              </a-row>
+              <a-row type="flex" justify="end">
+                <a-col :md="20">
                   <a-upload-dragger
                   name="file"
                   :multiple="true"
@@ -64,7 +69,7 @@
                   <p class="ant-upload-drag-icon">
                     <a-icon type="inbox" />
                   </p>
-                  <p class="ant-upload-text">s
+                  <p class="ant-upload-text">
                     Click or drag file to this area to upload
                   </p>
                   <p class="ant-upload-hint">
@@ -74,7 +79,6 @@
                 </a-upload-dragger>
                 </a-col>
               </a-row>
-             
             </template>
           </a-card>
           <!-- / Campaign Table Card -->
