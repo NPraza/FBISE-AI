@@ -2,6 +2,8 @@
 
 <script>
 import ocrCard from '../../../components/ocrCard/ocrCard.vue';
+import api from '../../../services/api';
+
 // "Authors" table list of columns and their properties.
 const tableHeader = [
   {
@@ -26,14 +28,7 @@ const tableHeader = [
 ];
 
 // "Authors" table list of rows and their properties.
-const tableData = [
-    {
-		key: '1',
-		fileName: "saad.zip",
-		AIMarks: '10/15',
-		AIFeedback: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',
-	},
-];
+const tableData = [];
 
 
 export default {
@@ -52,7 +47,31 @@ export default {
       },
     };
   },
+  beforeMount(){
+    this.paper_id = this.$route.params.paper_id
+    this.question_id = this.$route.params.question_id
+  },
   mounted () { 
+    api.get('/ocr-results?paper_id='+this.paper_id+'&question_id='+this.question_id)
+    .then(response => {
+      let i = 0;
+      this.tableData = response.data.map(res => {
+        i++;
+        const parts = res.file_path.split('/');
+        const fileName = parts[parts.length - 1];
+        return {
+          key: i.toString(),
+          fileName,
+          image_src: res.file_path,
+          ocr_result: res.answer,
+          ocr_result_id: res._id,
+          feedback: res.feedback?.rating
+        }
+      })
+    })
+    .catch(error => {
+      console.error(error);
+    });
   },
   methods: {
   },

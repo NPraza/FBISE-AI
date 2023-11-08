@@ -20,9 +20,7 @@
               <a-col :span="10">OCR Data</a-col>
               <a-col :span="6" class="text-center">Like/Dislike</a-col>
             </a-row>
-            <ocrCard />
-            <ocrCard />
-            <ocrCard />
+            <ocrCard v-for="data in tableData" :image_src="data.image_src" :file_name="data.fileName" :ocr_result="data.ocr_result" :feedback="data.feedback" />
           </a-card>
           <a-row type="flex" justify="end" class="mt-20">
             <a-col>

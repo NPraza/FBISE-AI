@@ -1,6 +1,7 @@
 <template src="./check-result.html"></template>
 
 <script>
+import api from './../../../services/api';
 
 // "Authors" table list of columns and their properties.
 const tableHeader = [
@@ -43,17 +44,7 @@ const tableHeader = [
 ];
 
 // "Authors" table list of rows and their properties.
-const tableData = [
-    {
-		key: '1',
-		date: "21-1-2022",
-		paper: 'Physics',
-		questionNumber: 60,
-    answerUploaded: 56,
-    wrongOCR: 26,
-    dissatisfiedChecking: 19,
-	},
-];
+const tableData = [];
 
 export default {
   components: {
@@ -103,7 +94,34 @@ export default {
     //     ],
     };
   },
+  beforeMount(){
+    this.tableData = [];
+  },
   mounted () { 
+    api.get('/papers')
+    .then(response => {
+      let i = 0;
+      response.data.map(res => {
+        const data = res.questions.map(question => {
+          i++;
+          return {
+            key: i.toString(),
+            date: new Date(question.created_at).toLocaleDateString(),
+            paper: res.name,
+            paper_id: res._id,
+            questionNumber: question.number,
+            question_id: question._id,
+            answerUploaded: question.answers.length,
+            wrongOCR: question.wrong_ocr.length,
+            dissatisfiedChecking: question.wrong_checking.length,
+          }
+        })
+        this.tableData.push(...data);
+      });
+    })
+    .catch(error => {
+      console.error(error);
+    });
   },
   methods: {
   },

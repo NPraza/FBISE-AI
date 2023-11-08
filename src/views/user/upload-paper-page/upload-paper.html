@@ -32,7 +32,7 @@
                   Question:
                 </a-col>
                 <a-col :md="20">
-                  <a-select style="width: 300px" placeholder="Select a question">
+                  <a-select style="width: 300px" @change="handleQuestionChange" placeholder="Select a question">
                     <a-select-option v-for="question in questions" :value="question._id">
                       {{ question.statement }}
                     </a-select-option>
@@ -42,11 +42,11 @@
               </a-row>
               <a-row type="flex" justify="end">
                 <a-col :md="20">
-                  <a-upload-dragger
-                  name="file"
+                  <input
+                  name="files"
                   :multiple="true"
                   accept="image/*"
-                  action="https://freeimage.host/api/1/upload?key=6d207e02198a847aa98d0a2a901485a5"
+                  type="file"
                   @change="handleChange"
                 >
                   <p class="ant-upload-drag-icon">
@@ -59,17 +59,17 @@
                     Support for a single or bulk upload. Strictly prohibit from uploading company data or other
                     band files
                   </p>
-                </a-upload-dragger>
+                </a-upload>
                 </a-col>
               </a-row>
               <a-row type="flex" justify="end" class="mt-20">
                 <a-col>
                   <a-button style="width: 150px; margin-right: 15px;">Back</a-button>
-                  <router-link to="/ocr">
-                    <a-button type="primary" style="width: 150px">
+                  <!-- <router-link to="/ocr"> -->
+                    <a-button @click="submit" type="primary" style="width: 150px">
                       Next
                     </a-button>
-                </router-link>
+                <!-- </router-link> -->
                 </a-col>
               </a-row>
             </template>

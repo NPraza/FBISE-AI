@@ -60,7 +60,7 @@ let routes = [
 		},
 	},
 	{
-		path: '/user-data',
+		path: '/user-data/:paper_id/:question_id',
 		name: 'User Data',
 		layout: "dashboard",
 		component: () => import(/* webpackChunkName: "dashboard" */ '../views/admin/user-data-page/user-data.vue'),
@@ -87,7 +87,7 @@ let routes = [
 		},
 	},
 	{
-		path: '/ocr',
+		path: '/ocr/:paper_id/:question_id',
 		name: 'OCR',
 		layout: "dashboard",
 		component: () => import(/* webpackChunkName: "dashboard" */ '../views/user/ocr-page/ocr.vue'),
