@@ -1,43 +1,22 @@
-<template src="./check-result.html"></template>
+<template src="./ocr-list.html"></template>
 
 <script>
 
 // "Authors" table list of columns and their properties.
 const tableHeader = [
   {
-    title: "Date",
-    sorter: true,
+    title: "",
     dataIndex: "date",
     scopedSlots: { customRender: "date" },
   },
   {
-    title: "Paper",
-    dataIndex: "paper",
-    scopedSlots: { customRender: "paper" },
-  },
-  {
-    title: "Question No",
-    dataIndex: "questionNumber",
-    scopedSlots: { customRender: "questionNumber" },
-  },
-  {
-    title: "Answer Uploaded",
-    dataIndex: "answerUploaded",
-    scopedSlots: { customRender: "answerUploaded" },
-  },
-  {
-    title: "Wrong OCR",
-    dataIndex: "wrongOCR",
-    scopedSlots: { customRender: "wrongOCR" },
-  },
-  {
-    title: "Dissatisfied Checking",
-    dataIndex: "dissatisfiedChecking",
-    scopedSlots: { customRender: "dissatisfiedChecking" },
+    title: "File Name",
+    dataIndex: "fileName",
+    scopedSlots: { customRender: "fileName" },
   },
   {
     title: "Action",
-    scopedSlots: { customRender: 'userData' },
+    scopedSlots: { customRender: 'edit' },
     // render:text=><Link to='/detail'>View</Link>
   },
 ];
@@ -46,12 +25,8 @@ const tableHeader = [
 const tableData = [
     {
 		key: '1',
-		date: "21-1-2022",
-		paper: 'Physics',
-		questionNumber: 60,
-    answerUploaded: 56,
-    wrongOCR: 26,
-    dissatisfiedChecking: 19,
+		title: "21-1-2022",
+    fileName: "saad.zip"
 	},
 ];
 
@@ -69,6 +44,7 @@ export default {
         current: 1,
         pageSize: 20
       },
+      
     //   dataSource: [
     //       {
     //         key: '1',
@@ -110,4 +86,4 @@ export default {
 };
 </script>
 
-<style src="./check-result.css" scoped></style>
+<style src="./ocr-list.css" scoped></style>
