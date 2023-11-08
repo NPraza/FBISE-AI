@@ -86,6 +86,24 @@ let routes = [
 			layoutClass: "navbarFixed",
 		},
 	},
+	{
+		path: '/ocr',
+		name: 'OCR',
+		layout: "dashboard",
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/user/ocr-page/ocr.vue'),
+		meta: {
+			layoutClass: "navbarFixed",
+		},
+	},
+	{
+		path: '/ocr-list',
+		name: 'OCR List',
+		layout: "dashboard",
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/user/ocr-list-page/ocr-list.vue'),
+		meta: {
+			layoutClass: "navbarFixed",
+		},
+	},
 	// {
 	// 	path: '/dashboard',
 	// 	name: 'Dashboard',

@@ -1,32 +1,27 @@
-<template src="./user-data.html"></template>
+<template src="./ocr.html"></template>
 
 <script>
+import ocrCard from '../../../components/ocrCard/ocrCard.vue';
 // "Authors" table list of columns and their properties.
 const tableHeader = [
   {
-    title: "File name",
+    title: "Uploaded Picture",
     sorter: true,
-    dataIndex: "fileName",
-    scopedSlots: { customRender: "fileName" },
+    dataIndex: "uploadedPicture",
+    scopedSlots: { customRender: "uploadedPicture" },
     width:150
   },
   {
-    title: "AI Marks",
-    dataIndex: "AIMarks",
-    scopedSlots: { customRender: "AIMarks" },
-    width:100
-  },
-  {
-    title: "A.I Feedback",
-    dataIndex: "AIFeedback",
-    scopedSlots: { customRender: "AIFeedback" },
+    title: "OCR Data",
+    dataIndex: "ocrData",
+    scopedSlots: { customRender: "ocrData" },
     width:500
   },
   {
-    title: "",
-    scopedSlots: { customRender: 'detail' },
-    width:100
-    // render:text=><Link to='/detail'>View</Link>
+    title: "Like/Dislike",
+    dataIndex: "likeDislike",
+    scopedSlots: { customRender: "likeDislike" },
+    width:150
   },
 ];
 
@@ -43,6 +38,7 @@ const tableData = [
 
 export default {
   components: {
+    ocrCard
   },
   data() {
     return {
@@ -63,4 +59,4 @@ export default {
 };
 </script>
 
-<style src="./user-data.css" scoped></style>
+<style src="./ocr.css" scoped></style>
