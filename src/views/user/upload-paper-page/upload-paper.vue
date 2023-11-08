@@ -1,15 +1,26 @@
 <template src="./upload-paper.html"></template>
 
 <script>
+import api from '../../../services/api';
 
 export default {
   components: {
   },
   data() {
-    return {};
+    return {
+      papers: [],
+      questions: [],
+    };
   },
 
   mounted () { 
+    api.get('/papers')
+    .then(response => {
+      this.papers = response.data;
+    })
+    .catch(error => {
+      console.log(error)
+    });
   },
   methods: {
     handleChange(info) {
@@ -22,6 +33,15 @@ export default {
       } else if (status === 'error') {
         this.$message.error(`${info.file.name} file upload failed.`);
       }
+    },
+    handlePaperChange(paper_id) {
+      api.get('/questions?paper_id='+paper_id)
+      .then(response => {
+        this.questions = response.data;
+      })
+      .catch(error => {
+        console.log(error)
+      });
     },
   },
 };
