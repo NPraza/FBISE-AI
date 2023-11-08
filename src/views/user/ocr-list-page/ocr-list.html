@@ -7,6 +7,13 @@
             class="header-solid h-full"
           >
             <template #title>
+              <div>
+                <div>
+                  <p>Progress: {{ completedRequests }}/{{ totalRequests }}</p>
+                  <p>Successful Requests: {{ successfulRequests }}</p>
+                  <p>Failed Requests: {{ failedRequests }}</p>
+                </div>
+              </div>
               <a-row type="flex" align="middle" class="mb-20">
                 <a-col :span="24" :md="12">
                   <h5 class="font-semibold m-0">Welcome to FBISE Subjective A.I Assessment Portal: </h5>
@@ -46,11 +53,11 @@
             <a-row type="flex" justify="end" class="mt-20">
               <a-col>
                 <a-button style="width: 150px; margin-right: 15px;">Back</a-button>
-                <router-link to="/user-data">
-                  <a-button type="primary" style="width: 150px">
+                <!-- <router-link to="/user-data"> -->
+                  <a-button type="primary" style="width: 150px" @click="runAI">
                     Run AI
                   </a-button>
-              </router-link>
+              <!-- </router-link> -->
               </a-col>
             </a-row>
           </a-card>

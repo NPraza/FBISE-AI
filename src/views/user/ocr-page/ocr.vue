@@ -61,10 +61,12 @@ export default {
         const fileName = parts[parts.length - 1];
         return {
           key: i.toString(),
-          fileName,
+          file_name: fileName,
           image_src: res.file_path,
           ocr_result: res.answer,
           ocr_result_id: res._id,
+          paper_id: res.paper_id._id,
+          question_id: res.question_id._id,
           feedback: res.feedback?.rating
         }
       })
@@ -74,7 +76,26 @@ export default {
     });
   },
   methods: {
-  },
+    updateOcrResult(ocr_result_id, data){
+      api.put('/ocr-results/'+ocr_result_id, data)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    },
+    updateOcrFeedback(data){
+      data.module_name = 'OCRResult';
+      api.post('/feedback/create', data)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    }
+  }
 };
 </script>
 
