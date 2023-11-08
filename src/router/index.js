@@ -87,7 +87,7 @@ let routes = [
 		},
 	},
 	{
-		path: '/ocr',
+		path: '/ocr/:paper_id/:question_id',
 		name: 'OCR',
 		layout: "dashboard",
 		component: () => import(/* webpackChunkName: "dashboard" */ '../views/user/ocr-page/ocr.vue'),

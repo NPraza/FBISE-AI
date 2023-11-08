@@ -90,6 +90,7 @@
 							localStorage.setItem('authToken', response.data.token);
 							localStorage.setItem('role', response.data.role);
 							if(response.data.role === 'management') this.$router.push({ name: 'Landing Page' });
+							if(response.data.role === 'checker') this.$router.push({ name: 'Upload paper' });
 							else alert('page design is in progress');
 						})
 						.catch(error => {

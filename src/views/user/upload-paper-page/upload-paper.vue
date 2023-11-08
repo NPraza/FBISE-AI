@@ -9,7 +9,10 @@ export default {
   data() {
     return {
       papers: [],
+      selected_paper: String,
       questions: [],
+      selected_question: String,
+      files: [],
     };
   },
 
@@ -23,24 +26,48 @@ export default {
     });
   },
   methods: {
-    handleChange(info) {
-      const status = info.file.status;
-      if (status !== 'uploading') {
-        console.log(info.file, info.fileList);
+    handleChange(event) {
+      const selectedFiles = event.target.files;
+      // Push the selected files into the array
+      for (let i = 0; i < selectedFiles.length; i++) {
+        this.files.push(selectedFiles[i]);
       }
-      if (status === 'done') {
-        this.$message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === 'error') {
-        this.$message.error(`${info.file.name} file upload failed.`);
-      }
+      console.log(this.files)
     },
     handlePaperChange(paper_id) {
+      this.selected_paper = paper_id;
       api.get('/questions?paper_id='+paper_id)
       .then(response => {
         this.questions = response.data;
       })
       .catch(error => {
         console.log(error)
+      });
+    },
+    handleQuestionChange(question_id) {
+      this.selected_question = question_id;
+    },
+    submit() {
+      const formData = new FormData();
+
+      // Append the uploaded files to the FormData object
+      for (let i = 0; i < this.files.length; i++) {
+        formData.append('files', this.files[i]);
+      }
+      formData.append('paper_id', this.selected_paper);
+      formData.append('question_id', this.selected_question);
+      console.log(formData)
+      api.post('/ocr-results', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          }
+        }
+      )
+      .then(response => {
+        this.$router.push({ name: 'OCR', params: { paper_id: this.selected_paper, question_id: this.selected_question } });
+      })
+      .catch(error => {
+        console.log(error);
       });
     },
   },
