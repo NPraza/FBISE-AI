@@ -17,42 +17,24 @@
             <template>
               <a-row type="flex" align="middle" class="mb-20">
                 <a-col :md="4">
-                  Add Papper Name:
+                  Paper:
                 </a-col>
                 <a-col :md="8">
-                  <a-select style="width: 300px" @change="handleChange" placeholder="Select paper">
-                    <a-select-option value="jack">
-                      Jack
-                    </a-select-option>
-                    <a-select-option value="lucy">
-                      Lucy
-                    </a-select-option>
-                    <a-select-option value="disabled" disabled>
-                      Disabled
-                    </a-select-option>
-                    <a-select-option value="Yiminghe">
-                      yiminghe
+                  <a-select style="width: 300px" @change="handlePaperChange" placeholder="Select paper">
+                    <a-select-option v-for="paper in papers" :value="paper._id">
+                      {{ paper.name }}
                     </a-select-option>
                   </a-select>
                 </a-col>
               </a-row>
               <a-row type="flex" align="middle" class="mb-20">
                 <a-col :md="4">
-                  Add Papper Name:
+                  Question:
                 </a-col>
                 <a-col :md="20">
-                  <a-select style="width: 300px" @change="handleChange" placeholder="Select a person">
-                    <a-select-option value="jack">
-                      Jack
-                    </a-select-option>
-                    <a-select-option value="lucy">
-                      Lucy
-                    </a-select-option>
-                    <a-select-option value="disabled" disabled>
-                      Disabled
-                    </a-select-option>
-                    <a-select-option value="Yiminghe">
-                      yiminghe
+                  <a-select style="width: 300px" placeholder="Select a question">
+                    <a-select-option v-for="question in questions" :value="question._id">
+                      {{ question.statement }}
                     </a-select-option>
                   </a-select>
                   
@@ -61,9 +43,10 @@
               <a-row type="flex" justify="end">
                 <a-col :md="20">
                   <a-upload-dragger
-                  name="file"
+                  name="files"
                   :multiple="true"
-                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                  accept="image/*"
+                  action="https://freeimage.host/api/1/upload?key=6d207e02198a847aa98d0a2a901485a5"
                   @change="handleChange"
                 >
                   <p class="ant-upload-drag-icon">
