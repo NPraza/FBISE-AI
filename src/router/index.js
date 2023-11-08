@@ -60,7 +60,7 @@ let routes = [
 		},
 	},
 	{
-		path: '/user-data',
+		path: '/user-data/:paper_id/:question_id',
 		name: 'User Data',
 		layout: "dashboard",
 		component: () => import(/* webpackChunkName: "dashboard" */ '../views/admin/user-data-page/user-data.vue'),

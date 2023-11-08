@@ -49,9 +49,11 @@
                 <a @click="goToConversions(row)">View</a>
               </template> -->
               <template slot="userData" slot-scope="row">
-                <a-button type="primary" class="btn-edit" block>
-                  Go to user data
-                </a-button>
+                <router-link :to="{ name: 'User Data', params: { paper_id: row.paper_id, question_id: row.question_id }}">
+                  <a-button type="primary" class="btn-edit" block>
+                    Go to user data
+                  </a-button>
+                </router-link>
               </template>
             </a-table>
           </a-card>
