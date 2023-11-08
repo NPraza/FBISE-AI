@@ -1,0 +1,25 @@
+<div>
+  <template>
+    <a-row type="flex">
+      <a-col :span="24" class="mb-24">
+        <template>
+          <a-card
+            :bordered="false"
+            class="header-solid h-full"
+          >
+            <template #title>
+              <a-row type="flex" align="middle" class="mb-20">
+                <a-col :span="24" :md="12">
+                  <h5 class="font-semibold m-0">Welcome to FBISE Subjective A.I Assessment Portal: </h5>
+                  <p>Welcome to the portal, where you can effortlessly upload questions and leverage AI assistance for evaluation.</p>
+                </a-col>
+              </a-row>
+            </template>
+            <assessmentResult />
+          </a-card>
+        </template>
+      </a-col>
+    </a-row>
+  </template>
+  </div>
+  

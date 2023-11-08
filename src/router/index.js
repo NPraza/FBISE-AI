@@ -104,6 +104,15 @@ let routes = [
 			layoutClass: "navbarFixed",
 		},
 	},
+	{
+		path: '/assessment-result',
+		name: 'Rssessment Result',
+		layout: "dashboard",
+		component: () => import(/* webpackChunkName: "dashboard" */ '../views/user/assessment-result-page/assessment-result.vue'),
+		meta: {
+			layoutClass: "navbarFixed",
+		},
+	},
 	// {
 	// 	path: '/dashboard',
 	// 	name: 'Dashboard',
