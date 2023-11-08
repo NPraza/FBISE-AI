@@ -2,18 +2,6 @@
     <a-row :gutter="24" type="flex">
       <a-col :span="24" class="mb-24">
         <template>
-          <a-row type="flex" justify="center" class="mb-35">
-            <a-col :span="6">
-              <router-link to="/landing-page">
-                <a-button> Papers management </a-button>
-              </router-link>
-            </a-col>
-            <a-col :span="6">
-                <router-link to="/check-results">
-                    <a-button type="primary"> Check Results </a-button>
-                </router-link>
-            </a-col>
-          </a-row>
           <a-card
             :bordered="false"
             class="header-solid h-full"
@@ -40,17 +28,31 @@
               :data-source="tableData"
               :pagination="pagination"
               :loading="loading"
-              :row-selection="rowSelection"
             >
+            <span slot="action" slot-scope="record">
+              <a-checkbox :checked="record.done" @click="onChange(record)"></a-checkbox>
+            </span>
               <template slot="edit" slot-scope="row">
+                <router-link to="/ocr">
                 <a-button type="link" class="btn-edit">
-                  edit
+                  Edit
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
                     <path d="M7.23 2.13078L7.67 1.69078C8.19 1.17078 9.095 1.17078 9.615 1.69078L9.97 2.04578C10.23 2.30578 10.375 2.65078 10.375 3.01578C10.375 3.38078 10.23 3.73078 9.97 3.98578L9.53 4.42578L7.23 2.12578V2.13078ZM6.7 2.66078L2.145 7.21578C2 7.36078 1.91 7.55078 1.895 7.75578L1.76 9.22078C1.745 9.40578 1.81 9.58578 1.94 9.72078C2.06 9.84078 2.215 9.90578 2.38 9.90578H2.435L3.9 9.77078C4.105 9.75078 4.295 9.66078 4.44 9.51578L8.995 4.96078L6.695 2.66078H6.7ZM11.375 11.5008C11.375 11.2958 11.205 11.1258 11 11.1258H1C0.795 11.1258 0.625 11.2958 0.625 11.5008C0.625 11.7058 0.795 11.8758 1 11.8758H11C11.205 11.8758 11.375 11.7058 11.375 11.5008Z" fill="#24AAE2"/>
                     </svg>
                 </a-button>
+                </router-link>
               </template>
             </a-table>
+            <a-row type="flex" justify="end" class="mt-20">
+              <a-col>
+                <a-button style="width: 150px; margin-right: 15px;">Back</a-button>
+                <router-link to="/user-data">
+                  <a-button type="primary" style="width: 150px">
+                    Run AI
+                  </a-button>
+              </router-link>
+              </a-col>
+            </a-row>
           </a-card>
         </template>
       </a-col>
