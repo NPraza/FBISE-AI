@@ -52,6 +52,7 @@ export default {
   },
   data() {
     return {
+      loading:true,
       tableHeader,
       tableData,
       searchText: '',
@@ -60,38 +61,6 @@ export default {
         current: 1,
         pageSize: 20
       },
-    //   dataSource: [
-    //       {
-    //         key: '1',
-    //         name: 'Mike',
-    //         age: 32,
-    //         address: '10 Downing Street',
-    //       },
-    //       {
-    //         key: '2',
-    //         name: 'John',
-    //         age: 42,
-    //         address: '10 Downing Street',
-    //       },
-    //     ],
-
-    //     columns: [
-    //       {
-    //         title: 'Name',
-    //         dataIndex: 'name',
-    //         key: 'name',
-    //       },
-    //       {
-    //         title: 'Age',
-    //         dataIndex: 'age',
-    //         key: 'age',
-    //       },
-    //       {
-    //         title: 'Address',
-    //         dataIndex: 'address',
-    //         key: 'address',
-    //       },
-    //     ],
     };
   },
   beforeMount(){
@@ -100,6 +69,7 @@ export default {
   mounted () { 
     api.get('/papers')
     .then(response => {
+      this.loading = false
       let i = 0;
       response.data.map(res => {
         const data = res.questions.map(question => {

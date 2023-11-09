@@ -1,7 +1,7 @@
 <template>
 
 	<!-- Layout Footer -->
-	<a-layout-footer>
+	<a-layout-footer class="default-footer">
 
 		<!-- Footer Navigation Menu -->
 		<a-menu mode="horizontal">
@@ -78,7 +78,9 @@
 </script>
 
 <style lang="scss" scoped>
-
+	.default-footer{
+		display: none;
+	}
 	.nav-link svg {
 		margin-right: 5px;
 		vertical-align: middle;

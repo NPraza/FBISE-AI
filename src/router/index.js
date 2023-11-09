@@ -161,6 +161,7 @@ let routes = [
 	{
 		path: '/sign-in',
 		name: 'Sign-In',
+		layout: "",
 		component: () => import('../views/Sign-In.vue'),
 	},
 	// {
