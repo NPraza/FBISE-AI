@@ -105,7 +105,7 @@ let routes = [
 		},
 	},
 	{
-		path: '/assessment-result',
+		path: '/assessment-result/:ai_result_id',
 		name: 'Rssessment Result',
 		layout: "dashboard",
 		component: () => import(/* webpackChunkName: "dashboard" */ '../views/user/assessment-result-page/assessment-result.vue'),

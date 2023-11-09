@@ -12,6 +12,9 @@ export default {
     return {
     };
   },
+  beforeMount(){
+    this.ai_result_id = this.$route.params.ai_result_id
+  },
   mounted () { 
   },
   methods: {

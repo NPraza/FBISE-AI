@@ -31,7 +31,7 @@
               :loading="loading"
             >
               <template slot="detail" slot-scope="row">
-                <router-link to="/add-new-paper">
+                <router-link :to="{ name: 'Rssessment Result', params: { ai_result_id: row.ai_result_id }}">
                   <a-button type="link" class="btn-edit">
                   Veiw Details
                   </a-button>
