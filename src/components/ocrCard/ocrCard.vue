@@ -48,7 +48,7 @@
             updateFeedbackOnOcr(rating, ocr_data){
                 ocr_data.feedback = rating,
                 this.updateFeedback({
-                    rating, paper_id: ocr_data.paper_id, question_id: ocr_data.question_id
+                    rating, ocr_result_id: ocr_data.ocr_result_id
                 })
             }
         }

@@ -51,7 +51,7 @@ export default {
     this.question_id = this.$route.params.question_id
   },
   mounted () { 
-    api.get('/ocr-results?paper_id='+this.paper_id+'&question_id='+this.question_id)
+    api.get('/ocr-results?is_ai_checked=false&paper_id='+this.paper_id+'&question_id='+this.question_id)
     .then(response => {
       let i = 0;
       this.tableData = response.data.map(res => {
@@ -85,11 +85,9 @@ export default {
       this.successfulRequests = 0;
       this.failedRequests = 0;
 
-      const selected_answers = this.tableData.map( td => {
-        if(td.done) return td.ocr_result_id;
-      });
+      const selected_answers = this.tableData.filter( td => td.done );
       this.totalRequests = selected_answers.length;
-      const endpoints = selected_answers.map( sa => '/get-ai-result/'+sa );
+      const endpoints = selected_answers.map( sa => '/get-ai-result/'+sa.ocr_result_id );
 
       const requests = endpoints.map((endpoint) => {
         return api.get(endpoint)

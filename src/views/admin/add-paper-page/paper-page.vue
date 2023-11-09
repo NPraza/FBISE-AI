@@ -11,7 +11,7 @@ export default {
     return {
       formLayout: 'horizontal',
       form: this.$form.createForm(this, { name: 'coordinated' }),
-      question_id: String
+      question_id: null
     };
   },
   beforeMount(){

@@ -68,8 +68,8 @@ export default {
         return {
           key: i.toString(),
           fileName,
-          AIMarks: `${res.ai_result?.result?.ai_result?.marks_obtained || 0} / 100`,
-          AIFeedback: res.ai_result?.result?.ai_result?.weaknesses,
+          AIMarks: `${res.ai_result?.result?.marks_obtained || 0} / 100`,
+          AIFeedback: res.ai_result?.result?.weaknesses,
           ai_result_id: res.ai_result?._id
         }
       })
