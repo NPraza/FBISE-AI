@@ -9,18 +9,25 @@ export default {
   },
   data() {
     return {
+      loading:false,
+      loadingData:false,
       formLayout: 'horizontal',
       form: this.$form.createForm(this, { name: 'coordinated' }),
       question_id: String
     };
   },
   beforeMount(){
+    
     if(this.$route.query?.question_id) this.question_id = this.$route.query?.question_id;
+    if(this.$route.query?.question_id){
+      this.loadingData = true
+    }
   },
   mounted () { 
     if(this.question_id){
       api.get('/questions/'+this.question_id)
       .then(response => {
+        this.loadingData = false
         const fieldValues = { 
           addPapperName: response.data.paper_id.name, 
           addQuestionNumber: response.data.number, 
@@ -38,9 +45,12 @@ export default {
   },
   methods: {
     handleSubmit(e) {
+      
       e.preventDefault();
       this.form.validateFields((err, values) => {
+        
         if (!err) {
+          this.loading = true;
           const data = { 
             name: values.addPapperName, 
             number: values.addQuestionNumber, 
@@ -52,10 +62,12 @@ export default {
 
           const api_call = this.question_id ? api.put('/questions/'+this.question_id, data) : api.post('/questions', data);
           api_call.then(response => {
+            this.loading = false;
             console.log(response);
             this.$router.push({ name: 'Landing Page' });
           })
           .catch(error => {
+            this.loading = false;
             console.log(error);
           });
           console.log('Received values of form: ', values);

@@ -42,6 +42,7 @@ export default {
   },
   data() {
     return {
+      loading:true,
       paper_id: String,
       tableHeader,
       tableData,
@@ -59,6 +60,7 @@ export default {
   mounted () { 
     api.get('/questions?paper_id='+this.paper_id)
     .then(response => {
+      this.loading = false;
       let i = 0;
       console.log(response.data);
       this.tableData = response.data.map(res => {

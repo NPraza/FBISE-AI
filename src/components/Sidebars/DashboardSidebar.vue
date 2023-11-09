@@ -13,7 +13,7 @@
 		:class="['ant-layout-sider-' + sidebarColor, 'ant-layout-sider-' + sidebarTheme]"
 		theme="light"
 		:style="{ backgroundColor: 'transparent',}">
-			<div class="brand"><img src="images/logo-np-black.svg" alt=""> <span>Nearpeer</span></div>
+			<div class="brand"><img src="images/fbise-logo.jpg" alt=""> <span>FBISE</span></div>
 			<hr>
 
 			<!-- Sidebar Navigation Menu -->

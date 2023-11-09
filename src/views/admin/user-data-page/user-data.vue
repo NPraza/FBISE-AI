@@ -41,6 +41,7 @@ export default {
   },
   data() {
     return {
+      loading:true,
       paper_id: String,
       question_id: String,
       tableHeader,
@@ -60,6 +61,7 @@ export default {
   mounted () { 
     api.get('/ocr-results?paper_id='+this.paper_id+'&question_id='+this.question_id)
     .then(response => {
+      this.loading = false;
       let i = 0;
       this.tableData = response.data.map(res => {
         i++;
